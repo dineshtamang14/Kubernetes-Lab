@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: imp-pod
+   labels:
+      app: myapp
+spec:
+   containers:
+       - name: imp-container
+         image: busybox
+         command: ['sh', '-c', 'echo welcome to the course && sleep 60']
