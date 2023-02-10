@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+# ReplicaSet metadata 
+metadata:
+   name: replicaset-guestbook
+   lables:
+      app: guestbook
+      tier: frontend
+      purpose: repicaset-guest
+# ReplicaSet specifications
+spec:
+   replicas: 3
+   selector:
+       matchLabels:
+           tier: frontend
+       matchExpressions:
+           - {key: tier, operator: In, values: [frontend]}
+    # pods template 
+   template:
+#    pods metadata
+       metadata:
+           labels:
+             app: guestbook
+             tier: frontend
+    #   pods specifications
+       spec:
+           containers:
+               - name: php-redis
+                 image: gcr.io/google_samples/gb-frontend:v3
+                 ports:
+                   - containerPort: 80
