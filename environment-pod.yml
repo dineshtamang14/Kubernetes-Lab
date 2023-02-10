@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: env-pod
+   labels:
+      purpose: demonstrate-envars
+spec:
+   containers:
+      - name: env-container
+        image: alpine
+        env:
+          - name: POD_GREETING
+            value: "Welcome Dinesh Tamang"
+          - name: POD_FAREWELL
+            value: "By Selena Gomez"
