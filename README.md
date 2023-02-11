@@ -15,3 +15,10 @@
 
 # To delete all pods
 `kubectl delete pods --all`
+
+# To Make Node unavailable 
+`kubectl get nodes`
+`kubectl drain node-2` or `kubectl drain node-2 --ignore-daemonsets`
+
+# To Make Node available 
+`kubectl uncordon node-2`

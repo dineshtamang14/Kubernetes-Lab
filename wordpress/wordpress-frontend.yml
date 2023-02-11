@@ -19,10 +19,10 @@ spec:
       spec:
          containers:
             - name: wp-container
-              image: wordpress:4.8-apache
+              image: wordpress:5.7
               env:
                  - name: WORDPRESS_DB_HOST
-                   value: mysql-db
+                   value: mysql-db-host
                  - name: WORDPRESS_DB_PASSWORD
                    valueFrom:
                       secretKeyRef:
