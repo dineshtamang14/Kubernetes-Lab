@@ -1,39 +1,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-   name: wp-frontend
-   labels:
-      app: wordpress
+  name: wordpress
+  labels:
+    app: wordpress
 spec:
-   selector:
-      matchLabels:
-         app: wordpress
-         tier: frontend
-   strategy:
-      type: Recreate
-   template:
-      metadata:
-         labels:
-            app: wordpress
-            tier: frontend
-      spec:
-         containers:
-            - name: wp-container
-              image: wordpress:5.7
-              env:
-                 - name: WORDPRESS_DB_HOST
-                   value: mysql-db-host
-                 - name: WORDPRESS_DB_PASSWORD
-                   valueFrom:
-                      secretKeyRef:
-                         name: mysql-pswd
-                         key: password
-              ports:
-                 - containerPort: 80
-                   name: wp-container
-              volumeMounts:
-                 - name: wp-volume
-                   mountPath: /var/www/html
-         volumes:
-            - name: wp-volume
-              emptyDir: {}
+  selector:
+    matchLabels:
+      app: wordpress
+      tier: frontend
+  strategy:
+    type: Recreate
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: frontend
+    spec:
+      containers:
+      - image: wordpress:4.8-apache
+        name: wordpress
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: wordpress-mysql
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pswd
+              key: password
+        ports:
+        - containerPort: 80
+          name: wordpress
+        volumeMounts:
+        - name: wordpress-persistent-storage
+          mountPath: /var/www/html
+      volumes:
+      - name: wordpress-persistent-storage
+        persistentVolumeClaim:
+          claimName: wp-pv-claim
