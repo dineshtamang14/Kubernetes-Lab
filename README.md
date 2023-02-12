@@ -22,3 +22,12 @@
 
 # To Make Node available 
 `kubectl uncordon node-2`
+
+# To Watch Specific Pod
+`kubectl get pods -w -l app=website`
+
+# Printing all Pods Hostname
+`for i in 0 1 2; do kubectl exec zk-$i -- hostname; done`
+
+# Docker GUI 
+`Kitematic is a free Docker GUI`
