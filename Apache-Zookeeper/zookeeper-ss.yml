@@ -47,3 +47,6 @@ spec:
                       --log_level="INFO"
                   volumeMounts:
                       - name: zoo-volume
+               volumes:
+                  - name: zoo-volume
+                    emptyDir: {}
