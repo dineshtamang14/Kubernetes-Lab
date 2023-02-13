@@ -28,3 +28,6 @@
 # To Delete Service
 `docker service rm web-server`
 `docker ps -a`
+
+# To Deploy a service in docker swarm
+`docker stack deploy -c file-name.yml service-name`
