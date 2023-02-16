@@ -8,7 +8,7 @@ metadata:
     app: jenkins-deployment
   namespace: jenkins-lab
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: jenkins-app

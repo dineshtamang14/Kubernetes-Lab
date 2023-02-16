@@ -8,8 +8,9 @@ metadata:
   namespace: jenkins-lab
 spec:
   ports:
-    - port: 8080
+    - protocol: TCP
+      port: 8080
   selector:
     app: jenkins-app
     tier: frontend
-  type: LoadBalancer
+  type: ClusterIP
