@@ -36,7 +36,11 @@ spec:
             name: jenkins 
         volumeMounts: 
           - name: jenkins-volume
-            mountPath: /var/jenkins_home
+            mountPath: 
+                valueFrom:
+                   configMapKeyRef:
+                     name: jenkins-configmap
+                     key: home
       volumes: 
         - name: jenkins-volume
           persistentVolumeClaim:
