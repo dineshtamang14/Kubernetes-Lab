@@ -26,3 +26,6 @@
 
 # To delete all persistent volume
 `kubectl delete pv --all`
+
+# To delete all persistent volume claim
+`kubectl delete pvc --all`

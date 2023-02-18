@@ -5,9 +5,9 @@ metadata:
   labels:
     app: wordpress-service
 spec:
+  type: ClusterIP
   ports:
     - port: 80
   selector:
     app: wordpress
     tier: frontend
-  type: clusterIP
