@@ -20,3 +20,9 @@
 
 # To Scale statefulState
 `kubectl scale sts statefulset-name --replicas=3`
+
+# To list StatefulSet
+`kubectl get sts`
+
+# To delete all persistent volume
+`kubectl delete pv --all`
