@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress
+  name: wordpress-deployment
   labels:
-    app: wordpress
+    app: wordpress-deployment
 spec:
   selector:
     matchLabels:
@@ -14,7 +14,7 @@ spec:
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 0
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -26,7 +26,7 @@ spec:
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
-          value: mysql-headless-service
+          value: mysql-service
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:

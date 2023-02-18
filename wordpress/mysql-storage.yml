@@ -6,7 +6,8 @@ metadata:
     app: wordpress
 spec:
   accessModes:
-    - ReadWriteOnce
+  # multiple pod can use this volume at a time
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
