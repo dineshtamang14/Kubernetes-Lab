@@ -8,7 +8,7 @@ spec:
     matchLabels:
       app: mysql
       tier: wordpress
-  serviceName: mysql-service
+  serviceName: mysql-headless-service
   template: 
     metadata:
       labels:
@@ -28,9 +28,14 @@ spec:
           - containerPort: 3306
             name: mysql
           volumeMounts:
-          - name: mysql-persistent-storage
+          - name: mysql-storage
             mountPath: /var/lib/mysql
-      volumes:
-        - name: mysql-persistent-storage
-          persistentVolumeClaim:
-            claimName: mysql-pvc
+  volumeClaimTemplates:
+  - metadata:
+      name: mysql-storage
+    spec: 
+      storageClassName: mysql-pv
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 500Mi
