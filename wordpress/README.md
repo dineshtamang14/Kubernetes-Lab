@@ -17,3 +17,6 @@
 
 # To decode file with base64
 `base64 -d <filename>`
+
+# To Scale statefulState
+`kubectl scale sts statefulset-name --replicas=3`
