@@ -29,3 +29,12 @@
 
 # To delete all persistent volume claim
 `kubectl delete pvc --all`
+
+# To see the logs of pod
+`kubectl logs pod-name`
+
+# To seet the realtime logs of pod
+`kubectl logs -f pod-name`
+
+# To the logs of terminated pod
+`kubectl logs --previous <pod_name> -c <container_name>`
