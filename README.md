@@ -31,3 +31,10 @@
 
 # Docker GUI 
 `Kitematic is a free Docker GUI`
+
+# To list the cluster components
+`kubectl get componentstatus`
+
+# To list the cluster info
+`kubectl cluster-info`
+`kubectl version --short`
