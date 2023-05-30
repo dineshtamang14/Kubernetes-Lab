@@ -38,3 +38,6 @@
 # To list the cluster info
 `kubectl cluster-info`
 `kubectl version --short`
+
+# To run a container with shell access
+`kubectl run myshell --rm -it --image busybox -- sh`  # rm flag to delete container after exit
